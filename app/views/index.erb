@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Welcome to Wun Min & Jeremy's blog!!!</h1>
+  <p>Hello, readers!</p>
+  <a href ="/posts/new">Contribute to us now!</a>
+
+  <% @posts.each do |post| %>
+  <container>
+    <h1><%= post.title %></h1>
+    <h3><%= post.author %></h3>
+    <p><%= post.content %></p>
+
+    <h6><% post_tags = PostTag.where(post_id: post.id) %>
+      Tags:
+      <% post_tags.each do |x| %>
+        <span><%= x.tag.name %></span>
+      <% end %>
+    </h6>
+  </container>
+  <% end %>
+</div>

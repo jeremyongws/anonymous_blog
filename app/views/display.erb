@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @post.title %></h1>
+  <h3><%= @post.author %></h3>
+  <p><%= @post.content %></p>
+  <h6><% post_tags = PostTag.where(post_id: @post.id) %>
+    Tags:
+    <% post_tags.each do |x| %>
+      <span><%= x.tag.name %></span>
+    <% end %>
+  </h6>
+
+  <a href ="/posts/<%= @post.id %>/edit">Edit</a>
+  <br/>
+
+  <form action="/posts/<%= @post.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete">
+  </form>
+
+</div>
+
